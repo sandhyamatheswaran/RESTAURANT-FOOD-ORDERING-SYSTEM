@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Restaurant Food Ordering System</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+  <h1>Restaurant Food Ordering System</h1>
+
+  <h2>Place an Order</h2>
+  <form action="/order" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="food">Food:</label>
+    <input type="text" id="food" name="food" required>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" required>
+
+    <button type="submit">Place Order</button>
+  </form>
+
+  <!-- ... -->
+
+<!-- ... -->
+
+<h2>Orders details</h2>
+<ul>
+  {{#each orders}}
+    <li>
+      {{name}} ordered {{quantity}} {{food}}
+    </li>
+  {{/each}}
+</ul>
+
+<!-- ... -->
+
+<h2> Updating and Deleting Orders</h2>
+<ul>
+  {{#each orders}}
+    <li>
+      <form action="/order/{{_id}}/update" method="POST" style="display: inline;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{name}}" required>
+
+        <label for="food">Food:</label>
+        <input type="text" id="food" name="food" value="{{food}}" required>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" value="{{quantity}}" required>
+
+        <button type="submit">Update</button>
+      </form>
+      <form action="/order/{{_id}}/delete" method="POST" style="display: inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+  {{/each}}
+</ul>
+
+<!-- ... -->
+
+
+</body>
+</html>
